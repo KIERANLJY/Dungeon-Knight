@@ -27,6 +27,7 @@ public class PlayerController : MonoBehaviour
         Flip();
         Run();
         Jump();
+        Attack();
         CheckGround();
         SwitchStatesInJumping();
     }
@@ -87,6 +88,14 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    void Attack()
+    {
+        if (Input.GetButtonDown("Attack"))
+        {
+            _animator.SetTrigger("Attack");
+        }
+    }
+
     void CheckGround()
     {
         _isGround = _feetCollider.IsTouchingLayers(LayerMask.GetMask("Ground"));
@@ -95,14 +104,11 @@ public class PlayerController : MonoBehaviour
     void SwitchStatesInJumping()
     {
         _animator.SetBool("Idle", false);
-        if (_animator.GetBool("Jump"))
-        {
             // Reach the top
-            if (_rigidBody.velocity.y < 0)
-            {
-                _animator.SetBool("Jump", false);
-                _animator.SetBool("Fall", true);
-            }
+        if (_rigidBody.velocity.y < 0)
+        {
+            _animator.SetBool("Jump", false);
+            _animator.SetBool("Fall", true);
         }
         else if (_isGround)
         {
