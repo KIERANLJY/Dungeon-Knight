@@ -2,28 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyBat : MonoBehaviour
+public class EnemyBat : Enemy
 {
-    private int _health;
-    private int _damage;
-
     // Start is called before the first frame update
-    void Start()
+    new void Start()
     {
-        
+        _health = 5;
+        _damage = 1;
     }
 
     // Update is called once per frame
-    void Update()
+    new void Update()
     {
-        if (_health < 0)
-        {
-            Destroy(gameObject);
-        }
-    }
-
-    public void TakeDamage(int damage)
-    {
-        _health -= damage;
+        base.Update();
     }
 }
