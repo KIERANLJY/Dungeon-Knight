@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    private float _runSpeed;
-    private float _jumpSpeed;
-    private float _doubleJumpSpeed;
+    public float _runSpeed;
+    public float _jumpSpeed;
+    public float _doubleJumpSpeed;
     private bool _isGround;
     private bool _canDoubleJump;
     private Rigidbody2D _rigidBody;
@@ -16,9 +16,9 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        _runSpeed = 5;
-        _jumpSpeed = 6;
-        _doubleJumpSpeed = 5;
+        // _runSpeed = 5;
+        // _jumpSpeed = 6;
+        // _doubleJumpSpeed = 5;
         _rigidBody = GetComponent<Rigidbody2D>();
         _animator = GetComponent<Animator>();
         _feetCollider = GetComponent<BoxCollider2D>();
