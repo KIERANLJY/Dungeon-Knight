@@ -6,7 +6,7 @@ public abstract class Enemy : MonoBehaviour
 {
     public int _health;
     public int _damage;
-    private float _flashTime;
+    public float _flashTime;
     private SpriteRenderer _spriteRenderer;
     private Color _originalColor;
 
@@ -15,7 +15,7 @@ public abstract class Enemy : MonoBehaviour
     {
         _flashTime = 0.2f;
         _spriteRenderer = GetComponent<SpriteRenderer>();
-        _originalColor = _spriteRenderer.color; 
+        _originalColor = _spriteRenderer.color;
     }
 
     // Update is called once per frame
@@ -47,5 +47,19 @@ public abstract class Enemy : MonoBehaviour
     void ResetColor()
     {
         _spriteRenderer.color = _originalColor;
+    }
+
+    void OnTriggerEnter2D(Collider2D _other)
+    {
+        if (_other.gameObject.CompareTag("Player") && _other.GetType().ToString() == "UnityEngine.CapsuleCollider2D")
+        {
+            if (_other.GetComponent<PlayerHealth>() != null)
+            {
+                //if (!_other.GetComponent<PlayerHealth>().getInvincible())
+                //{
+                    _other.GetComponent<PlayerHealth>().PlayerTakesDamage(_damage);
+                //}
+            }
+        }
     }
 }
