@@ -46,4 +46,14 @@ public class PlayerHealth : MonoBehaviour
         // Wait and enable taking damage
         yield return new WaitForSeconds(_invincibleTime);
     }
+
+    public void UseHealthPotion()
+    {
+        _health += 3;
+        if (_health > HealthBar._maxHealth)
+        {
+            _health = HealthBar._maxHealth;
+        }
+        HealthBar._currentHealth = _health;
+    }
 }
