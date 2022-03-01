@@ -5,17 +5,19 @@ using UnityEngine;
 public class PlayerHealth : MonoBehaviour
 {
     public int _health;
-    private float _invincibleTime;
     private Animator _animator;
+    private PolygonCollider2D _polygonCollider;
+    public float _damageCD;
     
     // Start is called before the first frame update
     void Start()
     {
         // _health = 20;
-        _invincibleTime = 0.5f;
+        // _damageCD = 1f;
         _animator = GetComponent<Animator>();
         HealthBar._maxHealth = _health;
         HealthBar._currentHealth = _health;
+        _polygonCollider = GetComponent<PolygonCollider2D>();
     }
 
     // Update is called once per frame
@@ -33,23 +35,25 @@ public class PlayerHealth : MonoBehaviour
             _health = 0;
         }
         HealthBar._currentHealth = _health;
-        StartCoroutine(Invincible());
         if (_health == 0)
         {
             _animator.SetTrigger("Die");
             Destroy(gameObject, 0.6f);
         }
+        _polygonCollider.enabled = false;
+        StartCoroutine(WaitForDamageCD());
     }
 
-    IEnumerator Invincible()
+    IEnumerator WaitForDamageCD()
     {
         // Wait and enable taking damage
-        yield return new WaitForSeconds(_invincibleTime);
+        yield return new WaitForSeconds(_damageCD);
+        _polygonCollider.enabled = true;
     }
 
     public void UseHealthPotion()
     {
-        _health += 3;
+        _health += 2;
         if (_health > HealthBar._maxHealth)
         {
             _health = HealthBar._maxHealth;

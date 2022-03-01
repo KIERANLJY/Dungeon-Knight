@@ -21,7 +21,7 @@ public class PickUp : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D _other)
     {
-        if (_other.CompareTag("Player"))
+        if (_other.CompareTag("Player") && _other.GetType().ToString() == "UnityEngine.CapsuleCollider2D")
         {
             for (int i = 0; i < _inventory._slots.Length; i++)
             {

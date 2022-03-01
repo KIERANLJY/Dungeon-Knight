@@ -51,14 +51,11 @@ public abstract class Enemy : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D _other)
     {
-        if (_other.gameObject.CompareTag("Player") && _other.GetType().ToString() == "UnityEngine.CapsuleCollider2D")
+        if (_other.gameObject.CompareTag("Player") && _other.GetType().ToString() == "UnityEngine.PolygonCollider2D")
         {
             if (_other.GetComponent<PlayerHealth>() != null)
             {
-                //if (!_other.GetComponent<PlayerHealth>().getInvincible())
-                //{
-                    _other.GetComponent<PlayerHealth>().PlayerTakesDamage(_damage);
-                //}
+                _other.GetComponent<PlayerHealth>().PlayerTakesDamage(_damage);
             }
         }
     }
