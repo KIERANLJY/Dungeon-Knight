@@ -23,7 +23,6 @@ public class PickUp : MonoBehaviour
     {
         if (_other.CompareTag("Player") && _other.GetType().ToString() == "UnityEngine.CapsuleCollider2D")
         {
-            
             for (int i = 0; i < _inventory._slots.Length; i++)
             {
                 if (!_inventory._isFull[i])
