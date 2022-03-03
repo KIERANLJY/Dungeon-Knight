@@ -6,11 +6,13 @@ using UnityEngine.SceneManagement;
 public class DoorToNextLevel : MonoBehaviour
 {
     private bool _interactive;
+    private CameraFollow _cameraFollow;
 
     // Start is called before the first frame update
     void Start()
     {
         _interactive = false;
+        _cameraFollow = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraFollow>();
     }
 
     // Update is called once per frame
@@ -20,7 +22,8 @@ public class DoorToNextLevel : MonoBehaviour
         {
             if (Input.GetButtonDown("Interact"))
             {
-                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+                _cameraFollow.SetCamPosLimit(34f, -4f, 70f, 1f);
+                SceneManager.LoadScene(3);
             }
         }
     }

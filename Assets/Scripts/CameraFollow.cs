@@ -30,9 +30,11 @@ public class CameraFollow : MonoBehaviour
         }    
     }
 
-    public void SetCamPosLimit(Vector2 _minPos, Vector2 _maxPos)
+    public void SetCamPosLimit(float _minPosX, float _minPosY, float _maxPosX, float _maxPosY)
     {
-        _minCamPos = _minPos;
-        _maxCamPos = _maxPos;
+        _minCamPos.x = _minPosX;
+        _minCamPos.y = _minPosY;
+        _maxCamPos.x = _maxPosX;
+        _minCamPos.y = _minPosY;
     }
 }
