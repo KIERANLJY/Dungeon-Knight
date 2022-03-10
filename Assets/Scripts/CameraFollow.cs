@@ -35,6 +35,6 @@ public class CameraFollow : MonoBehaviour
         _minCamPos.x = _minPosX;
         _minCamPos.y = _minPosY;
         _maxCamPos.x = _maxPosX;
-        _minCamPos.y = _minPosY;
+        _maxCamPos.y = _maxPosY;
     }
 }
