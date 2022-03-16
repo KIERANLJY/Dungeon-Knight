@@ -10,10 +10,13 @@ public class CameraFollow : MonoBehaviour
     public Vector2 _minCamPos;
     public Vector2 _maxCamPos;
 
+    private Vector3 _offset;
+
     // Start is called before the first frame update
     void Start()
     {
         // _smoothing = 0.1f;
+        _offset = new Vector3(0, 1, 0);
     }
 
     void LateUpdate()
@@ -22,7 +25,7 @@ public class CameraFollow : MonoBehaviour
         {
             if (transform.position != _target.position)
             {
-                Vector2 _targetPos = _target.position;
+                Vector2 _targetPos = _target.position + _offset;
                 _targetPos.x = Mathf.Clamp(_targetPos.x, _minCamPos.x, _maxCamPos.x);
                 _targetPos.y = Mathf.Clamp(_targetPos.y, _minCamPos.y, _maxCamPos.y);
                 transform.position = Vector2.Lerp(transform.position, _targetPos, _smoothing);
