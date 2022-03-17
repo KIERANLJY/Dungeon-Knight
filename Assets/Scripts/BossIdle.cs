@@ -2,28 +2,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BossMove : StateMachineBehaviour
+public class BossIdle : StateMachineBehaviour
 {
-    Transform player;
-    Rigidbody2D rigidBody;
-    EnemyBoss boss;
-    float speed = 2f;
+    Transform _player;
+    Rigidbody2D _rigidBody;
+    public float _discoverRange = 5f;
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        player = GameObject.FindGameObjectWithTag("Player").transform;
-        rigidBody = animator.GetComponent<Rigidbody2D>();
-        boss = animator.GetComponent<EnemyBoss>();
+        _player = GameObject.FindGameObjectWithTag("Player").transform;
+        _rigidBody = animator.GetComponent<Rigidbody2D>();
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        boss.LookAtPlayer();
-        Vector2 targetPos = new Vector2(player.position.x, rigidBody.position.y);
-        Vector2 newPos = Vector2.MoveTowards(rigidBody.position, targetPos, Time.fixedDeltaTime * speed);
-        rigidBody.MovePosition(newPos);
+        if (Vector2.Distance(_player.position, _rigidBody.position) <= _discoverRange)
+        {
+            animator.SetTrigger("Move");
+        }
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
