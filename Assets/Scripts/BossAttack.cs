@@ -11,15 +11,17 @@ public class BossAttack : MonoBehaviour
     private bool _allowAttack;
     private Animator _animator;
     private PolygonCollider2D _polygonCollider;
-    Transform _player;
-    Rigidbody2D _rigidBody;
+    private Transform _player;
+    private Rigidbody2D _rigidBody;
     private float _attackRange;
+    private EnemyBoss _boss;
+    private CapsuleCollider2D _collider;
 
     // Start is called before the first frame update
     void Start()
     {
         _attackDamage = 1;
-        _startTime = 0.58f;
+        _startTime = 0.4f;
         _attackTime = 0.04f;
         _interval = 2f;
         _allowAttack = true;
@@ -28,12 +30,16 @@ public class BossAttack : MonoBehaviour
         _player = GameObject.FindGameObjectWithTag("Player").transform;
         _rigidBody = this.GetComponentInParent<Rigidbody2D>();
         _attackRange = 3f;
+        _boss = GetComponentInParent<EnemyBoss>();
+        _collider = GetComponentInParent<CapsuleCollider2D>();
     }
 
     // Update is called once per frame
     void Update()
     {
         Attack();
+        Enraged();
+        Death();
     }
 
     public void Attack()
@@ -75,5 +81,25 @@ public class BossAttack : MonoBehaviour
         {
             _other.GetComponent<PlayerHealth>().PlayerTakesDamage(_attackDamage);
         }
+    }
+
+    public void Enraged()
+    {
+        if (_boss._health <= 13)
+        {
+            _interval = 1f;
+        }
+
+    }
+
+    public void Death()
+    {
+        if (_boss._health <= 3)
+        {
+            _animator.SetTrigger("Die");
+            _collider.enabled = false;
+            _allowAttack = false;
+        }
+
     }
 }
