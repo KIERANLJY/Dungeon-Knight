@@ -641,7 +641,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 5/5
+  m_Text: 20/20
 --- !u!222 &584101019
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -8365,7 +8365,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5772e2a10f57f4f4fab020139655d87d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _health: 5
+  _health: 20
   _damageCD: 1
 --- !u!114 &608462150
 MonoBehaviour:
@@ -8379,9 +8379,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f39d9c3e4108d9042955fa339d75e280, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _runSpeed: 5
-  _jumpSpeed: 6
-  _doubleJumpSpeed: 5
+  _runSpeed: 6
+  _jumpSpeed: 6.5
+  _doubleJumpSpeed: 6
 --- !u!60 &608462151
 PolygonCollider2D:
   m_ObjectHideFlags: 0
