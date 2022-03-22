@@ -12,6 +12,10 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D _rigidBody;
     private Animator _animator;
     private BoxCollider2D _feetCollider;
+    private bool _isLadder;
+    public float _climbSpeed;
+    private float _gravity;
+    private bool _isClimbing;
 
     // Start is called before the first frame update
     void Start()
@@ -22,6 +26,8 @@ public class PlayerController : MonoBehaviour
         _rigidBody = GetComponent<Rigidbody2D>();
         _animator = GetComponent<Animator>();
         _feetCollider = GetComponent<BoxCollider2D>();
+        // _climbSpeed = 2;
+        _gravity = _rigidBody.gravityScale;
     }
 
     // Update is called once per frame
@@ -32,6 +38,9 @@ public class PlayerController : MonoBehaviour
         Jump();
         CheckGround();
         SwitchStatesInJumping();
+        CheckLadder();
+        CheckIsClimbing();
+        Climb();
     }
 
     // Change orientation of the play according to moving direction
@@ -101,7 +110,7 @@ public class PlayerController : MonoBehaviour
     void CheckGround()
     {
         // Check if the player is on the ground
-        _isGround = _feetCollider.IsTouchingLayers(LayerMask.GetMask("Ground"));
+        _isGround = _feetCollider.IsTouchingLayers(LayerMask.GetMask("Ground")) || _feetCollider.IsTouchingLayers(LayerMask.GetMask("Platform"));
     }
 
     void SwitchStatesInJumping()
@@ -133,6 +142,49 @@ public class PlayerController : MonoBehaviour
         {
             _animator.SetBool("DoubleFall", false);
             _animator.SetBool("Idle", true);
+        }
+    }
+
+    void CheckLadder()
+    {
+        _isLadder = _feetCollider.IsTouchingLayers(LayerMask.GetMask("Ladder"));
+    }
+
+    void CheckIsClimbing()
+    {
+        _isClimbing = _animator.GetBool("Climb");
+    }
+
+    void Climb()
+    {
+        if (_isLadder)
+        {
+            float _moveDir = Input.GetAxis("Vertical");
+            if (_moveDir > 0.5f || _moveDir < -0.5f)
+            {
+                _rigidBody.gravityScale = 0f;
+                Vector2 _playVel = new Vector2(_rigidBody.velocity.x, _moveDir * _climbSpeed);
+                _rigidBody.velocity = _playVel;
+                _animator.SetBool("Climb", true);
+            }
+            else
+            {
+                if (! _isClimbing)
+                {
+                    _rigidBody.gravityScale = _gravity;
+                }
+                else
+                {
+                    Vector2 _playVel = new Vector2(_rigidBody.velocity.x, 0f);
+                    _rigidBody.velocity = _playVel;
+                }
+                
+            }
+        }
+        else
+        {
+            _rigidBody.gravityScale = _gravity;
+            _animator.SetBool("Climb", false);
         }
     }
 }

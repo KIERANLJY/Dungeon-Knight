@@ -8334,7 +8334,7 @@ GameObject:
   - component: {fileID: 608462150}
   - component: {fileID: 608462149}
   - component: {fileID: 608462148}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -8379,9 +8379,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f39d9c3e4108d9042955fa339d75e280, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _runSpeed: 6
-  _jumpSpeed: 6.5
-  _doubleJumpSpeed: 6
+  _runSpeed: 5
+  _jumpSpeed: 6
+  _doubleJumpSpeed: 5
+  _climbSpeed: 2
 --- !u!60 &608462151
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -8534,7 +8535,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 192463295
-  m_SortingLayer: 5
+  m_SortingLayer: 6
   m_SortingOrder: 0
   m_Sprite: {fileID: -5711848221618334454, guid: c5442f869acda1b4b872c14854015ce8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -9090,7 +9091,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 876948137
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 607af9a9676e21142bb454ec5d137a62, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -13749,7 +13750,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 876948137
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 8751891af00010a40b54f22fa8206d3b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

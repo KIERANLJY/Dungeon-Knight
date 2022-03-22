@@ -16,10 +16,10 @@ TagManager:
   - Ground
   - Spike
   - TriggerBox
-  - 
-  - 
-  - 
-  - 
+  - Player
+  - Enemy
+  - Platform
+  - Ladder
   - 
   - 
   - 
@@ -48,6 +48,9 @@ TagManager:
     locked: 0
   - name: Ground
     uniqueID: 3669929603
+    locked: 0
+  - name: Ladder
+    uniqueID: 2272999883
     locked: 0
   - name: Item
     uniqueID: 876948137
