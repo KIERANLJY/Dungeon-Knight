@@ -8,6 +8,8 @@ public class PlayerHealth : MonoBehaviour
     private Animator _animator;
     private PolygonCollider2D _polygonCollider;
     public float _damageCD;
+    private SpriteRenderer _playerSprite;
+    private Color _originalColor;
     
     // Start is called before the first frame update
     void Start()
@@ -18,6 +20,8 @@ public class PlayerHealth : MonoBehaviour
         HealthBar._maxHealth = _health;
         HealthBar._currentHealth = _health;
         _polygonCollider = GetComponent<PolygonCollider2D>();
+        _playerSprite= GetComponent<SpriteRenderer>();
+        _originalColor = _playerSprite.color;
     }
 
     // Update is called once per frame
@@ -59,5 +63,19 @@ public class PlayerHealth : MonoBehaviour
             _health = HealthBar._maxHealth;
         }
         HealthBar._currentHealth = _health;
+    }
+
+    public void UseInvinciblePotion(float _invincibleTime)
+    {
+        _polygonCollider.enabled = false;
+        _playerSprite.color = Color.grey;
+        StartCoroutine(PotionTimeOut(_invincibleTime));
+    }
+    IEnumerator PotionTimeOut(float _invincibleTime)
+    {
+        yield return new WaitForSeconds(_invincibleTime);
+        _polygonCollider.enabled = true;
+        _playerSprite.color = _originalColor;
+        
     }
 }

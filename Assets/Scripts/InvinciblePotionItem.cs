@@ -4,18 +4,14 @@ using UnityEngine;
 
 public class InvinciblePotionItem : MonoBehaviour
 {
-    private PolygonCollider2D _playerCollider;
-    private SpriteRenderer _playerSprite;
     public float _invincibleTime;
-    private Color _originalColor;
+    private PlayerHealth _playerHealth;
 
     // Start is called before the first frame update
     void Start()
     {
-        _playerCollider = GameObject.FindGameObjectWithTag("Player").GetComponent<PolygonCollider2D>();
-        _playerSprite= GameObject.FindGameObjectWithTag("Player").GetComponent<SpriteRenderer>();
         // _invincibleTime = 5f;
-        _originalColor = _playerSprite.color;
+        _playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>();
     }
 
     // Update is called once per frame
@@ -26,15 +22,7 @@ public class InvinciblePotionItem : MonoBehaviour
 
     public void Use()
     {
-        _playerCollider.enabled = false;
-        _playerSprite.color = Color.grey;
-        StartCoroutine(PotionTimeOut());
-    }
-    IEnumerator PotionTimeOut()
-    {
-        yield return new WaitForSeconds(_invincibleTime);
-        _playerCollider.enabled = true;
-        _playerSprite.color = _originalColor;
+        _playerHealth.UseInvinciblePotion(_invincibleTime);
         Destroy(gameObject);
     }
 }
