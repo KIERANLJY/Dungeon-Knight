@@ -75,7 +75,6 @@ public class PlayerHealth : MonoBehaviour
     {
         yield return new WaitForSeconds(_invincibleTime);
         _polygonCollider.enabled = true;
-        _playerSprite.color = _originalColor;
-        
+        _playerSprite.color = _originalColor; 
     }
 }

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PickUp : MonoBehaviour
+public class PickUpInvinciblePotion : MonoBehaviour
 {
     private Inventory _inventory;
     public GameObject _itemButton;
@@ -29,6 +29,7 @@ public class PickUp : MonoBehaviour
                 {
                     _inventory._isFull[i] = true;
                     Instantiate(_itemButton, _inventory._slots[i].transform, false);
+                    _itemButton.GetComponent<InvinciblePotionItem>().SetIndex(i);
                     Destroy(gameObject);
                     break;
                 }
