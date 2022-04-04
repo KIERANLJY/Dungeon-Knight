@@ -10,6 +10,7 @@ public class PauseMenu : MonoBehaviour
     private GameObject _player;
     private GameObject _camera;
     private PlayerHealth _playerHealth;
+    private ArrowAttack _arrowAttack;
 
     // Start is called before the first frame update
     void Start()
@@ -17,6 +18,7 @@ public class PauseMenu : MonoBehaviour
         _player = GameObject.FindGameObjectWithTag("Player");
         _camera = GameObject.FindGameObjectWithTag("Camera");
         _playerHealth = _player.GetComponent<PlayerHealth>();
+        _arrowAttack = _player.GetComponentInChildren<ArrowAttack>();
     }
 
     // Update is called once per frame
@@ -61,7 +63,7 @@ public class PauseMenu : MonoBehaviour
 
     public void Save()
     {
-        SaveSystem.SavePlayer(_playerHealth);
+        SaveSystem.SavePlayer(_playerHealth, _arrowAttack);
         _pauseMenuUI.SetActive(false);
         Time.timeScale = 1f;
         _isPaused = false;

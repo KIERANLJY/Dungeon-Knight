@@ -38,9 +38,12 @@ public class BossAttack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Attack();
-        Enraged();
-        Death();
+        if (_player != null)
+        {
+             Attack();
+            Enraged();
+            Death();
+        }  
     }
 
     public void Attack()

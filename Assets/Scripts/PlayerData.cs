@@ -8,8 +8,9 @@ public class PlayerData
     public int _health;
     public int _level;
     public float[] _position;
+    public int _num;
 
-    public PlayerData(PlayerHealth _player)
+    public PlayerData(PlayerHealth _player, ArrowAttack _arrow)
     {
         _health = _player._health;
         _level = _player.GetSceneIndex();
@@ -17,5 +18,6 @@ public class PlayerData
         _position[0] = _player.transform.position.x;
         _position[1] = _player.transform.position.y;
         _position[2] = _player.transform.position.z;
+        _num = _arrow._arrowQuantity;
     }
 }

@@ -12,6 +12,8 @@ public class PlayerAttack : MonoBehaviour
     private Animator _animator;
     private PolygonCollider2D _polygonCollider;
 
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -22,6 +24,7 @@ public class PlayerAttack : MonoBehaviour
         _allowAttack = true;
         _animator = GameObject.FindGameObjectWithTag("Player").GetComponent<Animator>();
         _polygonCollider = GetComponent<PolygonCollider2D>();
+
     }
 
     // Update is called once per frame

@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour
     public float _climbSpeed;
     private float _gravity;
     private bool _isClimbing;
+    private PlayerHealth _playerHealth;
 
     // Start is called before the first frame update
     void Start()
@@ -28,19 +29,23 @@ public class PlayerController : MonoBehaviour
         _feetCollider = GetComponent<BoxCollider2D>();
         // _climbSpeed = 2;
         _gravity = _rigidBody.gravityScale;
+        _playerHealth = GetComponent<PlayerHealth>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        Flip();
-        Run();
-        Jump();
-        CheckGround();
-        SwitchStatesInJumping();
-        CheckLadder();
-        CheckIsClimbing();
-        Climb();
+        if (_playerHealth._health > 0)
+        {
+            Flip();
+            Run();
+            Jump();
+            CheckGround();
+            SwitchStatesInJumping();
+            CheckLadder();
+            CheckIsClimbing();
+            Climb();
+        }
     }
 
     // Change orientation of the play according to moving direction

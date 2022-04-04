@@ -1101,4 +1101,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _player: {fileID: 1598451905459707598, guid: acffe2cb4d6287f468977c45f8e9963c, type: 3}
   _camera: {fileID: 7415592710249167064, guid: 8e55d0c914f20594480d2d3162d94df5, type: 3}
-  _UI: {fileID: 625604804882984877, guid: 7119d7dbfcb24d8439d0f4212988d83d, type: 3}
+  _UI: {fileID: 4148504066529860494, guid: 7119d7dbfcb24d8439d0f4212988d83d, type: 3}

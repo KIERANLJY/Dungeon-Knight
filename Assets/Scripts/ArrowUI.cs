@@ -16,7 +16,11 @@ public class ArrowUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        ArrowAttack _arrowAttack = GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<ArrowAttack>();
-        _arrowText.text = "* " + _arrowAttack._arrowQuantity.ToString();
+        GameObject _player = GameObject.FindGameObjectWithTag("Player");
+        if (_player != null)
+        {
+            ArrowAttack _arrowAttack = _player.GetComponentInChildren<ArrowAttack>();
+            _arrowText.text = "* " + _arrowAttack._arrowQuantity.ToString();
+        }
     }
 }

@@ -13,6 +13,7 @@ public class PlayerHealth : MonoBehaviour
     private SpriteRenderer _playerSprite;
     private Color _originalColor;
     private int _sceneIndex;
+    private CapsuleCollider2D _capsuleCollider;
     
     // Start is called before the first frame update
     void Start()
@@ -46,7 +47,7 @@ public class PlayerHealth : MonoBehaviour
         if (_health == 0)
         {
             _animator.SetTrigger("Die");
-            Destroy(gameObject, 0.6f);
+            Destroy(gameObject, 0.2f);
         }
         _polygonCollider.enabled = false;
         StartCoroutine(WaitForDamageCD());

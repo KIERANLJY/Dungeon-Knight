@@ -8,6 +8,7 @@ public class RecordLoading : MonoBehaviour
     private int _health;
     private int _level = -1;
     private Vector3 _position;
+    private int _num;
     public GameObject _player;
     public GameObject _camera;
     public GameObject _UI;
@@ -31,6 +32,7 @@ public class RecordLoading : MonoBehaviour
         _position.x = _data._position[0];
         _position.y = _data._position[1];
         _position.z = _data._position[2];
+        _num = _data._num;
         Vector3 _offset = new Vector3(0, 1, 0);
         if (_level == -1)
         {
@@ -44,6 +46,8 @@ public class RecordLoading : MonoBehaviour
             Instantiate(_UI, _position, Quaternion.identity);
             PlayerHealth _playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>();
             _playerHealth._health = _health;
+            ArrowAttack _arrowAttack = GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<ArrowAttack>();
+            _arrowAttack._arrowQuantity = _num;
         }
     }
 
