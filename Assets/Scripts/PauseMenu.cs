@@ -7,13 +7,16 @@ public class PauseMenu : MonoBehaviour
 {
     public static bool _isPaused = false;
     public GameObject _pauseMenuUI;
-    public GameObject _player;
-    public GameObject _camera;
+    private GameObject _player;
+    private GameObject _camera;
+    private PlayerHealth _playerHealth;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        _player = GameObject.FindGameObjectWithTag("Player");
+        _camera = GameObject.FindGameObjectWithTag("Camera");
+        _playerHealth = _player.GetComponent<PlayerHealth>();
     }
 
     // Update is called once per frame
@@ -52,7 +55,15 @@ public class PauseMenu : MonoBehaviour
         Time.timeScale = 1f;
         SceneManager.LoadScene(0);
         Destroy(this.gameObject);
-        Destroy(_player);
         Destroy(_camera);
+        Destroy(_player);
+    }
+
+    public void Save()
+    {
+        SaveSystem.SavePlayer(_playerHealth);
+        _pauseMenuUI.SetActive(false);
+        Time.timeScale = 1f;
+        _isPaused = false;
     }
 }

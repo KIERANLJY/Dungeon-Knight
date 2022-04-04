@@ -18,9 +18,12 @@ public class BossIdle : StateMachineBehaviour
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        if (Vector2.Distance(_player.position, _rigidBody.position) <= _discoverRange)
+        if (_player != null)
         {
-            animator.SetTrigger("Move");
+            if (Vector2.Distance(_player.position, _rigidBody.position) <= _discoverRange)
+            {
+                animator.SetTrigger("Move");
+            }
         }
     }
 

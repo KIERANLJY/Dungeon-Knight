@@ -47,18 +47,15 @@ public class PlayerController : MonoBehaviour
     void Flip()
     {
         bool playerHasXAxisSpeed = Mathf.Abs(_rigidBody.velocity.x) > Mathf.Epsilon;
-        if(playerHasXAxisSpeed)
+        // Move forward
+        if(Input.GetKeyDown("d") || Input.GetKeyDown("right"))
         {
-            // Move forward
-            if(_rigidBody.velocity.x > Mathf.Epsilon)
-            {
-                transform.localRotation = Quaternion.Euler(0,0,0);
-            }
-            // Move Backward
-            if(_rigidBody.velocity.x < -Mathf.Epsilon)
-            {
-                transform.localRotation = Quaternion.Euler(0,180,0);
-            }
+            transform.localRotation = Quaternion.Euler(0,0,0);
+        }
+        // Move Backward
+        if(Input.GetKeyDown("a") || Input.GetKeyDown("left"))
+        {
+            transform.localRotation = Quaternion.Euler(0,180,0);
         }
     }
 

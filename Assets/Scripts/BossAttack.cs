@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class BossAttack : MonoBehaviour
 {
@@ -99,7 +100,12 @@ public class BossAttack : MonoBehaviour
             _animator.SetTrigger("Die");
             _collider.enabled = false;
             _allowAttack = false;
+            Invoke("LoadEnding", 2);
         }
+    }
 
+    void LoadEnding()
+    {
+        SceneManager.LoadScene(5);
     }
 }

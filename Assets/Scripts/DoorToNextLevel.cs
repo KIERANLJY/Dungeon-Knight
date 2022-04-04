@@ -22,7 +22,6 @@ public class DoorToNextLevel : MonoBehaviour
         {
             if (Input.GetButtonDown("Interact"))
             {
-                _cameraFollow.SetCamPosLimit(25f, -49f, 116f, 17f);
                 SceneManager.LoadScene(3);
             }
         }
