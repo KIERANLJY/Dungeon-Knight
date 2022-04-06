@@ -1099,6 +1099,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74f3c899cead67942aa17f5bd95dbd46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _player: {fileID: 1598451905459707598, guid: acffe2cb4d6287f468977c45f8e9963c, type: 3}
+  _player: {fileID: 1103931236780290785, guid: db02e6620b61d724b9b21554f59c2953, type: 3}
   _camera: {fileID: 7415592710249167064, guid: 8e55d0c914f20594480d2d3162d94df5, type: 3}
   _UI: {fileID: 4148504066529860494, guid: 7119d7dbfcb24d8439d0f4212988d83d, type: 3}

@@ -5,22 +5,25 @@ using UnityEngine.UI;
 
 public class Sign : MonoBehaviour
 {
-    public GameObject _dialogBox;
-    public Text _dialogBoxText;
+    private DialogBox _dialogBox;
     private bool _playerOnSign;
 
     // Start is called before the first frame update
     void Start()
     {
+        _dialogBox = GameObject.FindGameObjectWithTag("InGameCanvas").GetComponent<DialogBox>();
         _playerOnSign = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (_playerOnSign)
+        if (_dialogBox != null)
         {
-            _dialogBox.SetActive(true);
+            if (_playerOnSign)
+            {
+                _dialogBox.ShowDialogBox();
+            }
         }
     }
 
@@ -35,7 +38,7 @@ public class Sign : MonoBehaviour
         if (_other.CompareTag("Player") && _other.GetType().ToString() == "UnityEngine.CapsuleCollider2D")
         {
             _playerOnSign = false;
-            _dialogBox.SetActive(false);
+            _dialogBox.HideDialogBox();
         }
     }
 }

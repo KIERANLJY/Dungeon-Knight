@@ -11890,8 +11890,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b259e1c076416a44e89403db47a7a47c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _dialogBox: {fileID: 0}
-  _dialogBoxText: {fileID: 0}
 --- !u!61 &1064805741
 BoxCollider2D:
   m_ObjectHideFlags: 0
